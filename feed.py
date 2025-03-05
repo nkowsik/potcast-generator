@@ -1,5 +1,6 @@
 import yaml
 import xml.etree.ElementTree as xml_tree
+from prettytable import PrettyTable
 
 with open('feed.yaml', 'r') as file:
     yaml_data = yaml.safe_load(file)
@@ -41,3 +42,41 @@ for item in yaml_data['item']:
 output_tree = xml_tree.ElementTree(rss_element)
 
 output_tree.write('podcast.xml', encoding= 'UTF-8', xml_declaration=True)
+
+def parse_podcast_xml(file_path):
+    tree = ET.parse(file_path)
+    root = tree.getroot()
+    items = []
+    for item in root.findall('.//item'):
+        title = item.find('title').text
+        link = item.find('link').text
+        description = item.find('description').text
+        items.append({'title': title, 'link': link, 'description': description})
+    return items
+
+def generate_table(items):
+    table = PrettyTable()
+    table.field_names = ["Title", "Link", "Description"]
+    for item in items:
+        table.add_row([item['title'], item['link'], item['description']])
+    return table.get_string()
+
+def update_readme(readme_path, table_content):
+    with open(readme_path, 'r') as file:
+        content = file.readlines()
+
+    start_index = content.index('## More Info\n')
+    end_index = start_index + 1
+    while end_index < len(content) and not content[end_index].startswith('#'):
+        end_index += 1
+
+    new_content = content[:start_index] + ['## Podcast Episodes\n', table_content, '\n'] + content[end_index:]
+
+    with open(readme_path, 'w') as file:
+        file.writelines(new_content)
+
+podcast_file = 'podcast.xml'
+readme_file = 'README.md'
+items = parse_podcast_xml(podcast_file)
+table_content = generate_table(items)
+update_readme(readme_file, table_content)
