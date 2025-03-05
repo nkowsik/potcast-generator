@@ -27,7 +27,7 @@ xml_tree.SubElement(channel_element, 'itunes:category', {'text': yaml_data['cate
 
 for item in yaml_data['item']:
     item_element = xml_tree.SubElement(channel_element, 'item')
-    xml_tree.SubElement(item_element, 'title').text = yaml_data['title']
+    xml_tree.SubElement(item_element, 'title').text = item['title']
     xml_tree.SubElement(item_element, 'itunes:author').text = yaml_data['author']
     xml_tree.SubElement(item_element, 'description').text = yaml_data['description']
     xml_tree.SubElement(item_element, 'itunes:duration').text = item['duration']
@@ -48,29 +48,26 @@ def parse_podcast_xml(file_path):
     root = tree.getroot()
     items = []
     for item in root.findall('.//item'):
+        
         title = item.find('title').text
-        link = item.find('link').text
+
+        link = 'https://nkowsik.github.io/podcast/'
         description = item.find('description').text
-        items.append({'title': title, 'link': link, 'description': description})
+        items.append({'title': title, 'link': link})
     return items
 
 def generate_table(items):
     table = PrettyTable()
-    table.field_names = ["Title", "Link", "Description"]
+    table.field_names = ["Title", "Link"]
     for item in items:
-        table.add_row([item['title'], item['link'], item['description']])
+        table.add_row([item['title'], item['link']])
     return table.get_string()
 
 def update_readme(readme_path, table_content):
     with open(readme_path, 'r') as file:
         content = file.readlines()
 
-    start_index = content.index('## More Info\n')
-    end_index = start_index + 1
-    while end_index < len(content) and not content[end_index].startswith('#'):
-        end_index += 1
-
-    new_content = content[:start_index] + ['## Podcast Episodes\n', table_content, '\n'] + content[end_index:]
+    new_content = ['## Podcast Episodes\n', table_content, '\n']
 
     with open(readme_path, 'w') as file:
         file.writelines(new_content)
