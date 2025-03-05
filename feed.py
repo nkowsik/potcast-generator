@@ -44,7 +44,7 @@ output_tree = xml_tree.ElementTree(rss_element)
 output_tree.write('podcast.xml', encoding= 'UTF-8', xml_declaration=True)
 
 def parse_podcast_xml(file_path):
-    tree = ET.parse(file_path)
+    tree = xml_tree.parse(file_path)
     root = tree.getroot()
     items = []
     for item in root.findall('.//item'):
