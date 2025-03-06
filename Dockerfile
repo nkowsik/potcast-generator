@@ -7,8 +7,9 @@ RUN apt-get update && apt-get install -y \
 
 RUN pip3 install PyYAML --break-system-packages
 RUN pip3 install PrettyTable --break-system-packages
+RUN pip3 install feedparser --break-system-packages
 
-COPY feed.py /usr/bin/feed.py
+COPY rss.py /usr/bin/rss.py
 
 COPY entrypoint.sh /entrypoint.sh
 
