@@ -35,6 +35,11 @@ for feeds in URLs:
         pubDate = entry.get("published", "")
         items.append({'title': title, 'link': link, 'description': description, 'published': pubDate, 'company': author})
 
+
+# sort the items on published date
+
+items = sorted(items, key=lambda x: x['published'], reverse=True)
+
 print(items)
 # Function to generate HTML content
 def generate_html(items):
