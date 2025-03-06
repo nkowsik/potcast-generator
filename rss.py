@@ -92,7 +92,7 @@ def generate_html(items):
     </style>
 </head>
 <body>
-    <h1>Latest Technology Blog</h1>
+    <h1>Latest Technology Trends by Kowsik</h1>
     <ul>
 """
     
