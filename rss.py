@@ -1,16 +1,14 @@
 import feedparser 
-from prettytable import PrettyTable
 
-URLs = ["https://blog.bytebytego.com/feed"]
+URLs = [
+    {"feed": "https://blog.bytebytego.com/feed", "author" : "ByteByteGo Newsletter"},
+    {"feed": "https://developers.googleblog.com/feed/", "author" : "Google Developers Blog"},
+    {"feed": "https://politepol.com/fd/hsh8RBv8OqZH.xml", "author" : "PayPal Developer Community Blog"}
+    ]
 
 items = []
 
-def generate_table(items):
-    table = PrettyTable()
-    table.field_names = ["Title", "Link", "Description"]
-    for item in items:
-        table.add_row([item['title'], item['link'], item['description'], company])
-    return table.get_string()
+
 
 def update_readme(readme_path, table_content):
     with open(readme_path, 'r') as file:
@@ -23,22 +21,21 @@ def update_readme(readme_path, table_content):
     with open(readme_path, 'w') as file:
         file.writelines(new_content)
 
-for URL in URLs:
+for feeds in URLs:
+    URL = feeds['feed']
+    author = feeds['author']
     feed = feedparser.parse(URL)
     for entry in feed.entries:
-        title = entry.title
-        link = entry.link
-        description = entry.description
-        pubDate = entry.published
-        items.append({'title': title, 'link': link, 'description': description, 'published': pubDate, 'company': 'ByteByteGo'})
+        title = entry.get("title", "")
+        link = entry.get("link", "")
+        description = entry.get("description", "")
+        #print("###############")
+        #print(entry)
 
-#table_content = generate_table(items)
+        pubDate = entry.get("published", "")
+        items.append({'title': title, 'link': link, 'description': description, 'published': pubDate, 'company': author})
 
-
-
-
-
-
+print(items)
 # Function to generate HTML content
 def generate_html(items):
     html_start = """
