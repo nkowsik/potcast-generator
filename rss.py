@@ -30,7 +30,7 @@ for URL in URLs:
         link = entry.link
         description = entry.description
         pubDate = entry.published
-        items.append({'title': title, 'link': link, 'description': description, 'published': pubDate, 'organnization': 'ByteByteGo'})
+        items.append({'title': title, 'link': link, 'description': description, 'published': pubDate, 'company': 'ByteByteGo'})
 
 #table_content = generate_table(items)
 
