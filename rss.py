@@ -18,7 +18,7 @@ def update_readme(readme_path, table_content):
 
 
 
-    new_content = ['## Latest Articles\n', table_content, '\n']
+    new_content = ['\n', table_content, '\n']
 
     with open(readme_path, 'w') as file:
         file.writelines(new_content)
@@ -46,7 +46,7 @@ def generate_html(items):
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Latest Technology Blog</title>
+    <title>Technology Blog</title>
     <style>
         body {
             font-family: Arial, sans-serif;
