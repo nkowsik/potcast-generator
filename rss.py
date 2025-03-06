@@ -122,4 +122,4 @@ def generate_html(items):
 html_content = generate_html(items)
 
 # Write the HTML content to a file
-update_readme('README.md', html_content)
+update_readme('index.html', html_content)
