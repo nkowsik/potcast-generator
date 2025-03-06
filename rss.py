@@ -42,12 +42,11 @@ for URL in URLs:
 # Function to generate HTML content
 def generate_html(items):
     html_start = """
-<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Latest Tech Company Developer Forum News</title>
+    <title>Latest Technology Blog</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -85,7 +84,7 @@ def generate_html(items):
     </style>
 </head>
 <body>
-    <h1>Latest Tech Company Developer Forum News</h1>
+    <h1>Latest Technology Blog</h1>
     <ul>
 """
     
