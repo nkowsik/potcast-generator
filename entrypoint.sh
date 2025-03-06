@@ -7,6 +7,7 @@ git config --global user.email "${INPUT_EMAIL}"
 git config --global --add safe.directory /github/workspace
 
 python3 /usr/bin/rss.py
+git pull origin main
 git add -A && git commit -m "Update Feed"
 git push origin main
 
