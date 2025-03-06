@@ -97,7 +97,7 @@ def generate_html(items):
 
     # Generate list items dynamically
     list_items = ""
-    for item in news_items:
+    for item in items:
         list_items += f"""
         <li>
             <h2>{item['title']}</h2>
