@@ -1,4 +1,5 @@
 import feedparser 
+from prettytable import PrettyTable
 
 URLs = ["https://blog.bytebytego.com/feed"]
 
