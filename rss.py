@@ -46,7 +46,6 @@ def generate_html(items):
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Technology Blog</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -99,7 +98,10 @@ def generate_html(items):
     for item in items:
         list_items += f"""
         <li>
-            <h2>{item['title']}</h2>
+        <a target="_blank" href={item['link']}>
+        <h2>{item['title']}</h2>
+        </a>
+            
             <p><span class="company">{item['company']}</span>: {item['description']}</p>
         </li>
 """
