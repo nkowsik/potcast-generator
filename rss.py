@@ -1,10 +1,7 @@
 import feedparser 
+from datetime import datetime
+import config
 
-URLs = [
-    {"feed": "https://blog.bytebytego.com/feed", "author" : "ByteByteGo Newsletter"},
-    {"feed": "https://developers.googleblog.com/feed/", "author" : "Google Developers Blog"},
-    {"feed": "https://politepol.com/fd/hsh8RBv8OqZH.xml", "author" : "PayPal Developer Community Blog"}
-    ]
 
 items = []
 
@@ -21,7 +18,15 @@ def update_readme(readme_path, table_content):
     with open(readme_path, 'w') as file:
         file.writelines(new_content)
 
-for feeds in URLs:
+date_format = "%a, %d %b %Y %H:%M:%S %z"  # Use %z for timezone-aware parsing
+
+def parse_date(date_str):
+    # Replace "GMT" with "+0000" for consistency in parsing
+    normalized_date_str = date_str.replace("GMT", "+0000")
+    return datetime.strptime(normalized_date_str, date_format)
+
+
+for feeds in config.URLs:
     URL = feeds['feed']
     author = feeds['author']
     feed = feedparser.parse(URL)
@@ -31,16 +36,18 @@ for feeds in URLs:
         description = entry.get("description", "")
         #print("###############")
         #print(entry)
-
         pubDate = entry.get("published", "")
+        if pubDate:
+            pubDate = parse_date(pubDate)
+            pubDate = pubDate.strftime("%Y-%m-%d %H:%M:%S")
+        #print(pubDate)
         items.append({'title': title, 'link': link, 'description': description, 'published': pubDate, 'company': author})
-
 
 # sort the items on published date
 
 items = sorted(items, key=lambda x: x['published'], reverse=True)
 
-print(items)
+#print(items)
 # Function to generate HTML content
 def generate_html(items):
     html_start = """
