@@ -98,7 +98,7 @@ def generate_html(items):
     for item in items:
         list_items += f"""
         <li>
-        <a target="_blank" href={item['link']}>
+        <a target="_blank" href="{item['link']}">
         <h2>{item['title']}</h2>
         </a>
             
