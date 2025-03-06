@@ -33,4 +33,4 @@ for URL in URLs:
         items.append({'title': title, 'link': link, 'description': description, 'published': pubDate})
 
 table_content = generate_table(items)
-update_readme(readme_file, table_content)
+update_readme('README.md', table_content)
