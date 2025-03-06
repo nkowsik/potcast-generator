@@ -40,7 +40,7 @@ for feeds in config.URLs:
         if pubDate:
             pubDate = parse_date(pubDate)
             pubDate = pubDate.strftime("%Y-%m-%d %H:%M:%S")
-        #print(pubDate)
+        #print(title, ' - ', author)
         items.append({'title': title, 'link': link, 'description': description, 'published': pubDate, 'company': author})
 
 # sort the items on published date
