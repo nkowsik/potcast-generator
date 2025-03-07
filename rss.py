@@ -102,6 +102,10 @@ def generate_html(items):
             font-weight: bold;
             color: #3498db;
         }
+        a span {
+            text-decoration: none; /* Remove underline for nested span */
+        }
+
 
         /* Responsive Design */
         @media (max-width: 768px) {
@@ -112,7 +116,9 @@ def generate_html(items):
                 padding: 15px;
                 font-size: 14px;
             }
+
             h2 {
+                
                 font-size: 18px;
                 margin-bottom: 10px;
             }
