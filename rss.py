@@ -15,6 +15,11 @@ def update_readme(readme_path, table_content):
 
 date_format = "%a, %d %b %Y %H:%M:%S %z"  # Use %z for timezone-aware parsing
 
+def remove_img_tags(description):
+    # Regex to match <img ... /> tags
+    img_tag_pattern = re.compile(r'<img[^>]*>')
+    return img_tag_pattern.sub('', description)
+    
 def parse_date(date_str):
     # Replace "GMT" with "+0000" for consistency in parsing
     normalized_date_str = date_str.replace("GMT", "+0000")
@@ -31,6 +36,7 @@ for feeds in config.URLs:
         if(URL.find("medium") != -1):
             description = description[0:300]
             description = description + "..."
+            description = remove_img_tags(description)
         pubDate = entry.get("published", "")
         if pubDate:
             pubDate = parse_date(pubDate)
