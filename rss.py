@@ -34,6 +34,9 @@ for feeds in config.URLs:
         title = entry.get("title", "")
         link = entry.get("link", "")
         description = entry.get("description", "")
+        if(URL.find("medium") != -1):
+            description = description[0:300]
+            description = description+"..."
         #print("###############")
         #print(entry)
         pubDate = entry.get("published", "")
