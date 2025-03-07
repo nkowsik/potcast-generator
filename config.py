@@ -11,7 +11,7 @@ URLs =  [
     },
     {
       "feed": "https://developer.squareup.com/blog/rss.xml",
-      "author": "Square Corner Blog RSS Feed"
+      "author": "Square Corner Blog Feed"
     },
     {
       "feed": "https://engineering.atspotify.com/feed/",
