@@ -54,6 +54,7 @@ def generate_html(items):
             margin: 0;
             padding: 20px;
             background-color: #f4f4f4;
+            overflow-x: hidden; /* Prevent horizontal scrolling */
         }
         h1 {
             color: #333;
@@ -81,7 +82,7 @@ def generate_html(items):
             font-weight: bold;
             color: #3498db;
         }
-        
+
         /* Responsive Design */
         @media (max-width: 768px) {
             body {
@@ -119,6 +120,7 @@ def generate_html(items):
                 line-height: 1.3;
             }
         }
+
     </style>
 </head>
 <body>
