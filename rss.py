@@ -2,6 +2,8 @@ import feedparser
 from datetime import datetime
 import config
 import re
+from bs4 import BeautifulSoup
+
 items = []
 
 def update_readme(readme_path, table_content):
@@ -25,6 +27,12 @@ def parse_date(date_str):
     normalized_date_str = date_str.replace("GMT", "+0000")
     return datetime.strptime(normalized_date_str, date_format)
 
+def remove_html_tags(html_content):
+    # Parse the HTML content using BeautifulSoup
+    soup = BeautifulSoup(html_content, 'html.parser')
+    # Extract and return the raw text
+    return soup.get_text()
+
 for feeds in config.URLs:
     URL = feeds['feed']
     author = feeds['author']
@@ -33,13 +41,15 @@ for feeds in config.URLs:
         title = entry.get("title", "")
         link = entry.get("link", "")
         description = entry.get("description", "")
-        description = remove_img_tags(description)
+        description = remove_html_tags(description)
         
-        description = description[0:300]
-        if description != "":
+
+        description = description[0:500]
+        if description != "null":
             description = description + "..."
             
-
+        #print("-----")
+        #print(description)
         pubDate = entry.get("published", "")
         if pubDate:
             pubDate = parse_date(pubDate)
