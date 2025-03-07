@@ -1,7 +1,7 @@
 import feedparser 
 from datetime import datetime
 import config
-
+import re
 items = []
 
 def update_readme(readme_path, table_content):
