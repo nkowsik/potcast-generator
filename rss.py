@@ -158,13 +158,15 @@ def generate_html(items):
     list_items = ""
     for item in items:
         list_items += f"""
-        <li>
         <a target="_blank" href="{item['link']}">
+        <li>
+        
         <h2>{item['title']}</h2>
-        </a>
+        
             
             <p><span class="company">{item['company']}</span>: {item['description']}</p>
         </li>
+        </a>
 """
     
     # Combine all parts
