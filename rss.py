@@ -36,7 +36,8 @@ for feeds in config.URLs:
         description = remove_img_tags(description)
         
         description = description[0:300]
-        description = description + "..."
+        if description != "":
+            description = description + "..."
             
 
         pubDate = entry.get("published", "")
