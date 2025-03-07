@@ -2,16 +2,11 @@ import feedparser
 from datetime import datetime
 import config
 
-
 items = []
-
-
 
 def update_readme(readme_path, table_content):
     with open(readme_path, 'r') as file:
         content = file.readlines()
-
-
 
     new_content = ['\n', table_content, '\n']
 
@@ -25,7 +20,6 @@ def parse_date(date_str):
     normalized_date_str = date_str.replace("GMT", "+0000")
     return datetime.strptime(normalized_date_str, date_format)
 
-
 for feeds in config.URLs:
     URL = feeds['feed']
     author = feeds['author']
@@ -36,21 +30,16 @@ for feeds in config.URLs:
         description = entry.get("description", "")
         if(URL.find("medium") != -1):
             description = description[0:300]
-            description = description+"..."
-        #print("###############")
-        #print(entry)
+            description = description + "..."
         pubDate = entry.get("published", "")
         if pubDate:
             pubDate = parse_date(pubDate)
             pubDate = pubDate.strftime("%Y-%m-%d %H:%M:%S")
-        #print(title, ' - ', author)
         items.append({'title': title, 'link': link, 'description': description, 'published': pubDate, 'company': author})
 
-# sort the items on published date
-
+# Sort the items by published date
 items = sorted(items, key=lambda x: x['published'], reverse=True)
 
-#print(items)
 # Function to generate HTML content
 def generate_html(items):
     html_start = """
@@ -91,6 +80,44 @@ def generate_html(items):
         .company {
             font-weight: bold;
             color: #3498db;
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            body {
+                padding: 10px;
+            }
+            li {
+                padding: 15px;
+                font-size: 14px;
+            }
+            h2 {
+                font-size: 18px;
+                margin-bottom: 10px;
+            }
+            p {
+                font-size: 14px;
+                line-height: 1.4;
+            }
+        }
+
+        @media (max-width: 480px) {
+            h1 {
+                font-size: 20px;
+                margin-bottom: 15px;
+            }
+            li {
+                padding: 10px;
+                font-size: 12px;
+            }
+            h2 {
+                font-size: 16px;
+                margin-bottom: 8px;
+            }
+            p {
+                font-size: 12px;
+                line-height: 1.3;
+            }
         }
     </style>
 </head>
