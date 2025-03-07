@@ -33,10 +33,12 @@ for feeds in config.URLs:
         title = entry.get("title", "")
         link = entry.get("link", "")
         description = entry.get("description", "")
-        if(URL.find("medium") != -1):
-            description = description[0:300]
-            description = description + "..."
-            description = remove_img_tags(description)
+        description = remove_img_tags(description)
+        
+        description = description[0:300]
+        description = description + "..."
+            
+
         pubDate = entry.get("published", "")
         if pubDate:
             pubDate = parse_date(pubDate)
@@ -45,6 +47,7 @@ for feeds in config.URLs:
 
 # Sort the items by published date
 items = sorted(items, key=lambda x: x['published'], reverse=True)
+
 
 # Function to generate HTML content
 def generate_html(items):
