@@ -34,14 +34,6 @@ URLs =  [
       "author": "Salesforce Developers Blog"
     },
     {
-      "feed": "https://medium.com/feed/paypal-tech",
-      "author": "The PayPal Technology Blog - Medium"
-    },
-    {
-      "feed": "https://politepol.com/fd/hsh8RBv8OqZH.xml",
-      "author": "PayPal Developer Community Blog"
-    },
-    {
       "feed": "https://engblog.nextdoor.com/feed",
       "author": "Nextdoor Engineering - Medium"
     },
