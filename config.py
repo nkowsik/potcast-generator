@@ -74,10 +74,6 @@ URLs =  [
       "author": "Benjamin Cane"
     },
     {
-      "feed": "https://levelup.gitconnected.com/feed",
-      "author": "Level Up"
-    },
-    {
       "feed": "https://developers.googleblog.com/feed/",
       "author": "Google Developers Blog"
     },
