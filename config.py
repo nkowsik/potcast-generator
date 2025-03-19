@@ -34,10 +34,6 @@ URLs =  [
       "author": "Salesforce Developers Blog"
     },
     {
-      "feed": "https://engblog.nextdoor.com/feed",
-      "author": "Nextdoor Engineering - Medium"
-    },
-    {
       "feed": "https://medium.com/feed/netflix-techblog",
       "author": "Netflix TechBlog - Medium"
     },
@@ -68,6 +64,14 @@ URLs =  [
     {
       "feed": "https://medium.com/feed/groupon-eng",
       "author": "Groupon Product and Engineering - Medium"
+    },
+    {
+      "feed": "https://bencane.com/feed",
+      "author": "Benjamin Cane"
+    },
+    {
+      "feed": "https://levelup.gitconnected.com/feed",
+      "author": "Level Up"
     },
     {
       "feed": "https://developers.googleblog.com/feed/",
