@@ -6,6 +6,10 @@ URLs =  [
       "author": "Thumbtack Engineering - Medium"
     },
     {
+      "feed": "https://feeds.libsyn.com/119955/rss",
+      "author": "Meta Tech PodCast"
+    },
+    {
       "feed": "https://medium.com/feed/airbnb-engineering",
       "author": "The Airbnb Tech Blog - Medium"
     },
