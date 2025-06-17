@@ -3,7 +3,7 @@
 URLs =  [
     {
       "feed": "https://medium.com/feed/thumbtack-engineering",
-      "author": "Thumbtack Engineering - Medium"
+      "author": "Thumbtack Engineering"
     },
     {
       "feed": "https://feeds.libsyn.com/119955/rss",
@@ -11,7 +11,7 @@ URLs =  [
     },
     {
       "feed": "https://medium.com/feed/airbnb-engineering",
-      "author": "The Airbnb Tech Blog - Medium"
+      "author": "The Airbnb Tech Blog"
     },
     {
       "feed": "https://developer.squareup.com/blog/rss.xml",
@@ -35,7 +35,7 @@ URLs =  [
     },
     {
       "feed": "https://politepol.com/fd/mUYv6KUJjKn8.xml",
-      "author": "Latest articles from the Shopify Engineering Blog - Shopify"
+      "author": "Shopify Engineering Blog"
     },
     {
       "feed": "https://developer.salesforce.com/blogs/feed#",
@@ -43,7 +43,7 @@ URLs =  [
     },
     {
       "feed": "https://medium.com/feed/netflix-techblog",
-      "author": "Netflix TechBlog - Medium"
+      "author": "Netflix TechBlog"
     },
     {
       "feed": "https://engineering.fb.com/feed/",
@@ -55,15 +55,15 @@ URLs =  [
     },
     {
       "feed": "https://instagram-engineering.com/feed",
-      "author": "Instagram Engineering - Medium"
+      "author": "Instagram Engineering"
     },
     {
       "feed": "https://engineering.fb.com/tag/instagram/feed/",
-      "author": "Instagram Archives - Engineering at Meta"
+      "author": "Instagram Archives"
     },
     {
       "feed": "https://tech.instacart.com/feed",
-      "author": "tech-at-instacart - Medium"
+      "author": "tech-at-instacart "
     },
     {
       "feed": "https://blog.bytebytego.com/feed",
@@ -71,7 +71,7 @@ URLs =  [
     },
     {
       "feed": "https://medium.com/feed/groupon-eng",
-      "author": "Groupon Product and Engineering - Medium"
+      "author": "Groupon Product and Engineering"
     },
     {
       "feed": "https://bencane.com/feed",
@@ -107,10 +107,10 @@ URLs =  [
     },
     {
       "feed": "https://medium.com/feed/zoom-developer-blog",
-      "author": "Zoom Developer Blog - Medium"
+      "author": "Zoom Developer Blog"
     },
     {
       "feed": "https://politepol.com/fd/saNoeOj1enUM.xml",
-      "author": "Engineering | Uber Blog"
+      "author": "Uber Blog"
     }
   ]
