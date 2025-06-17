@@ -69,43 +69,105 @@ def generate_html(items):
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <style>
         body {
-            font-family: Arial, sans-serif;
-            line-height: 1.6;
-            margin: 0;
-            padding: 20px;
-            background-color: #f4f4f4;
-            overflow-x: hidden; /* Prevent horizontal scrolling */
+        font-family: Arial, sans-serif;
+        line-height: 1.6;
+        margin: 0;
+        padding: 0;
+        background-color: #f9f9f9;
+        color: #333;
         }
         h1 {
-            color: #333;
-            text-align: center;
-        }
-        ul {
-            list-style-type: none;
-            padding: 0;
-        }
-        li {
-            background-color: #fff;
-            margin-bottom: 20px;
-            padding: 20px;
-            border-radius: 5px;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-        }
-        h2 {
-            color: #2c3e50;
-            margin-top: 0;
-        }
-        p {
-            color: #34495e;
-        }
-        .company {
-            font-weight: bold;
-            color: #3498db;
-        }
-        a span {
-            text-decoration: none; /* Remove underline for nested span */
+        font-size: 3em;
+        color: #0073e6;
+        text-align: center;
+        margin: 20px 0;
+        font-weight: bold;
+        letter-spacing: 2px;
+        background: linear-gradient(to right, #0073e6, #00c6ff);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
         }
 
+    .filter-section {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-bottom: 20px;
+    }
+
+    .filter-section label {
+        font-size: 1.2em;
+        font-weight: bold;
+        margin-right: 10px;
+        color: #333;
+    }
+
+    .filter-section select {
+        padding: 8px 12px;
+        font-size: 1em;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        background-color: #fff;
+        color: #333;
+        transition: border-color 0.3s;
+    }
+
+    .filter-section select:focus {
+        border-color: #0073e6;
+        outline: none;
+    }
+
+    h2 {
+        font-size: 1.5em;
+        color: #0073e6;
+        margin: 0 0 10px;
+    }
+
+    a {
+        text-decoration: none;
+        color: inherit;
+    }
+
+    a:hover h2 {
+        text-decoration: underline;
+    }
+
+    .company {
+        font-weight: bold;
+        color: #555;
+    }
+
+    ul {
+        list-style: none;
+        padding: 0;
+    }
+    li {
+        background: #fff;
+        margin: 15px 0;
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    li:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    }
+
+    p {
+        margin: 10px 0 0;
+    }
+    .banner {
+        background: linear-gradient(to right, #0073e6, #00c6ff);
+        color: white;
+        text-align: center;
+        padding: 20px;
+        font-size: 1.5em;
+        font-weight: bold;
+        margin-bottom: 20px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
 
         /* Responsive Design */
         @media (max-width: 768px) {
@@ -150,12 +212,59 @@ def generate_html(items):
     </style>
 </head>
 <body>
-    <h1>Latest Technology Trends:</h1>
-    <ul>
+    <div class="banner">
+        Welcome to Tech ByteBuzz, where we bring you the latest insights and trends in technology!
+    </div>
+        <div class="filter-section">
+        <label for="company-filter">Filter by Company:</label>
+        <select id="company-filter" onchange="filterByCompany()">
+            <option value="all">All</option>
+            <option value="American Express Technology">American Express Technology</option>
+            <option value="Benjamin Cane">Benjamin Cane</option>
+            <option value="ByteByteGo Newsletter">ByteByteGo Newsletter</option>
+            <option value="Capital One Tech Blog">Capital One Tech Blog</option>
+            <option value="Cloudera Blog">Cloudera Blog</option>
+            <option value="Developer Archives - Work Life by Atlassian">Developer Archives - Work Life by Atlassian</option>
+            <option value="Docker">Docker</option>
+            <option value="Dropbox Tech Blog">Dropbox Tech Blog</option>
+            <option value="eBay Tech Blog">eBay Tech Blog</option>
+            <option value="Groupon Product and Engineering">Groupon Product and Engineering</option>
+            <option value="Instagram Archives">Instagram Archives</option>
+            <option value="Instagram Engineering">Instagram Engineering</option>
+            <option value="Linked In">Linked In</option>
+            <option value="Meta Tech PodCast One">Meta Tech PodCast</option>
+            <option value="Shopify Engineering Blog">Shopify Engineering Blog</option>
+            <option value="Slack Engineering">Slack Engineering</option>
+            <option value="SoundCloud Backstage Blog">SoundCloud Backstage Blog</option>
+            <option value="Spotify Engineering">Spotify Engineering</option>
+            <option value="Square Corner Blog Feed">Square Corner Blog Feed</option>
+            <option value="Tech-at-instacart">Tech-at-instacart</option>
+            <option value="The Airbnb Tech Blog">The Airbnb Tech Blog</option>
+            <option value="Thumbtack Engineering">Thumbtack Engineering</option>
+            <option value="Uber Blog">Uber Blog</option>
+            <option value="Zoom Developer Blog">Zoom Developer Blog</option>
+
+        </select>
+    </div>
+    <ul id="articles-list">
 """
     
     html_end = """
     </ul>
+        <script>
+        function filterByCompany() {
+            const filterValue = document.getElementById('company-filter').value;
+            const articles = document.querySelectorAll('#articles-list li');
+
+            articles.forEach(article => {
+                if (filterValue === 'all' || article.dataset.company === filterValue) {
+                    article.style.display = '';
+                } else {
+                    article.style.display = 'none';
+                }
+            });
+        }
+    </script>
 </body>
 </html>
 """
@@ -165,7 +274,7 @@ def generate_html(items):
     for item in items:
         list_items += f"""
         
-        <li>
+        <li data-company={item['company']}>
         <a target="_blank" href="{item['link']}">
         <h2>{item['title']}</h2>
         </a>
