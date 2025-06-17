@@ -208,6 +208,45 @@ def generate_html(items):
                 line-height: 1.3;
             }
         }
+            .pagination {
+        text-align: center;
+        margin-top: 20px;
+    }
+
+    .pagination button {
+        padding: 10px 20px;
+        margin: 0 5px;
+        border: none;
+        border-radius: 5px;
+        background-color: #007bff; /* Primary blue color */
+        color: white;
+        font-size: 16px;
+        font-weight: bold;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    .pagination button:hover {
+        background-color: #0056b3; /* Darker blue on hover */
+        transform: translateY(-2px); /* Slight lift effect */
+        box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
+    }
+
+    .pagination button:disabled {
+        background-color: #cccccc; /* Gray for disabled buttons */
+        color: #666666;
+        cursor: not-allowed;
+        box-shadow: none;
+        transform: none;
+    }
+
+    .pagination span {
+        font-size: 18px;
+        font-weight: bold;
+        margin: 0 10px;
+        color: #333333;
+    }
 
     </style>
 </head>
@@ -251,18 +290,58 @@ def generate_html(items):
     
     html_end = """
     </ul>
+    <div id="pagination" class="pagination">
+        <button id="prev-btn" onclick="changePage(-1)" disabled>Previous</button>
+        <span id="page-info"></span>
+        <button id="next-btn" onclick="changePage(1)">Next</button>
+    </div>
         <script>
+            const articlesPerPage = 10;
+        let currentPage = 1;
+
+        function paginateArticles() {
+            const articles = document.querySelectorAll('#articles-list li:not(.hidden)');
+            const totalPages = Math.ceil(articles.length / articlesPerPage);
+
+            // Hide all articles
+            document.querySelectorAll('#articles-list li').forEach(article => article.style.display = 'none');
+
+            // Show articles for the current page
+            const start = (currentPage - 1) * articlesPerPage;
+            const end = start + articlesPerPage;
+            for (let i = start; i < end && i < articles.length; i++) {
+                articles[i].style.display = '';
+            }
+
+            // Update pagination buttons
+            document.getElementById('prev-btn').disabled = currentPage === 1;
+            document.getElementById('next-btn').disabled = currentPage === totalPages;
+            document.getElementById('page-info').textContent = `Page ${currentPage} of ${totalPages}`;
+        }
+
+        function changePage(direction) {
+            currentPage += direction;
+            paginateArticles();
+        }
+
+        // Initialize pagination
+        paginateArticles();
         function filterByCompany() {
             const filterValue = document.getElementById('company-filter').value;
             const articles = document.querySelectorAll('#articles-list li');
-
+            console.log(articles);
             articles.forEach(article => {
-                if (filterValue === 'all' || article.dataset.company === filterValue) {
-                    article.style.display = '';
-                } else {
-                    article.style.display = 'none';
-                }
+                    const company = article.getAttribute('data-company'); // Extract the data-company attribute
+                    if (filterValue === 'all' || company === filterValue) {
+                        article.style.display = ''; // Show the article if it matches the filter or if "All" is selected
+                        article.classList.remove('hidden');
+                    } else {
+                        article.style.display = 'none'; // Hide the article if it doesn't match
+                        article.classList.add('hidden');
+                    }
             });
+            currentPage = 1;
+            paginateArticles();
         }
     </script>
 </body>
