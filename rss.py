@@ -252,7 +252,7 @@ def generate_html(items):
 </head>
 <body>
     <div class="banner">
-        Welcome to Tech ByteBuzz, where we bring you the latest insights and trends in technology!
+        Welcome to Dev ByteBuzz, where we bring you the latest insights and trends in technology!
     </div>
         <div class="filter-section">
         <label for="company-filter">Filter by Company:</label>
