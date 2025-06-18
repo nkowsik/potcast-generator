@@ -41,8 +41,8 @@ In today’s fast-paced technology landscape, engineers and developers need to s
 - Uber Blog
 - Zoom Developer Blog
 
-**URL:** https://github.aexp.com/pages/amex-eng/ByteBuzz/
+**URL:** https://devbytebuzz.github.io/
 
-**Design:** https://enterprise-confluence.aexp.com/confluence/display/~knallur/ByteBuzz
+
 
 
