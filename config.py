@@ -74,10 +74,6 @@ URLs =  [
       "author": "Groupon Product and Engineering"
     },
     {
-      "feed": "https://bencane.com/feed",
-      "author": "Benjamin Cane"
-    },
-    {
       "feed": "https://developers.googleblog.com/feed/",
       "author": "Google Developers Blog"
     },
