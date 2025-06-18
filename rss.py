@@ -259,7 +259,6 @@ def generate_html(items):
         <select id="company-filter" onchange="filterByCompany()">
             <option value="all">All</option>
             <option value="American Express Technology">American Express Technology</option>
-            <option value="Benjamin Cane">Benjamin Cane</option>
             <option value="ByteByteGo Newsletter">ByteByteGo Newsletter</option>
             <option value="Capital One Tech Blog">Capital One Tech Blog</option>
             <option value="Cloudera Blog">Cloudera Blog</option>
