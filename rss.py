@@ -380,6 +380,15 @@ def generate_html(items):
 
     # Generate list items dynamically
     list_items = ""
+    def human_readable_date(published_date):
+        now = datetime.now()
+        diff = now - datetime.strptime(published_date, "%Y-%m-%d %H:%M:%S")
+        if diff.days == 0:
+            return "Today"
+        elif diff.days == 1:
+            return "Yesterday"
+        else:
+            return f"{diff.days} days ago"
     for item in items:
         list_items += f"""
         
@@ -390,7 +399,7 @@ def generate_html(items):
 
             
             <p><span class="company">{item['company']}</span>: {item['description']}</p>
-        <span class="published-date">Published: {item['published']}</span>
+        <span class="published-date">Published: {human_readable_date(item['published'])}</span>
         </li>
 """
     
