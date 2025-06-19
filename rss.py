@@ -92,31 +92,56 @@ def generate_html(items):
         display: flex;
         justify-content: center;
         align-items: center;
-        margin-bottom: 20px;
+        margin: 20px 0;
+        padding: 10px;
+        background-color: #f9f9f9;
+        border-radius: 8px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     }
 
     .filter-section label {
-        font-size: 1.2em;
+        font-size: 16px;
         font-weight: bold;
         margin-right: 10px;
         color: #333;
     }
 
     .filter-section select {
-        padding: 8px 12px;
-        font-size: 1em;
+        width: 100%;
+        max-width: 300px;
+        padding: 10px;
+        font-size: 16px;
         border: 1px solid #ccc;
-        border-radius: 5px;
+        border-radius: 8px;
         background-color: #fff;
-        color: #333;
-        transition: border-color 0.3s;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        appearance: none; /* Remove default dropdown arrow */
+        background-image: url('data:image/svg+xml;charset=US-ASCII,%3Csvg xmlns%3D%22http%3A//www.w3.org/2000/svg%22 viewBox%3D%220 0 4 5%22%3E%3Cpath fill%3D%22%23333%22 d%3D%22M2 0L0 2h4zM0 3l2 2 2-2z%22/%3E%3C/svg%3E');
+        background-repeat: no-repeat;
+        background-position: right 10px center;
+        background-size: 10px;
     }
 
     .filter-section select:focus {
-        border-color: #0073e6;
         outline: none;
+        border-color: #007bff;
+        box-shadow: 0 0 4px rgba(0, 123, 255, 0.5);
     }
+        /* Responsive Design */
+        @media (max-width: 600px) {
+        .filter-section {
+            flex-direction: column;
+            align-items: stretch;
+        }
 
+        .filter-section label {
+            margin-bottom: 10px;
+        }
+
+        .filter-section select {
+            max-width: 100%;
+        }
+    }
     h2 {
         font-size: 1.5em;
         color: #0073e6;
