@@ -271,6 +271,7 @@ def generate_html(items):
             <option value="Instagram Engineering">Instagram Engineering</option>
             <option value="Linked In">Linked In</option>
             <option value="Meta Tech PodCast One">Meta Tech PodCast</option>
+            <option value="Netflix TechBlog">Netflix TechBlog</option>
             <option value="Shopify Engineering Blog">Shopify Engineering Blog</option>
             <option value="Slack Engineering">Slack Engineering</option>
             <option value="SoundCloud Backstage Blog">SoundCloud Backstage Blog</option>
