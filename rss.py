@@ -386,13 +386,14 @@ def generate_html(items):
         if published_date:
             try:
                 diff = now - datetime.strptime(published_date, "%Y-%m-%d %H:%M:%S")
+                
                 if diff.days == 0:
                     return "Today"
                 elif diff.days == 1:
                     return "Yesterday"
                 else:
                     return f"{diff.days} days ago"
-            finally:
+            except ValueError:
                 return ""
     for item in items:
         pubDate = human_readable_date(item['published'])
