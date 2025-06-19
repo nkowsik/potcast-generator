@@ -87,7 +87,12 @@ def generate_html(items):
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
         }
-
+    .published-date {
+        display: block;
+        font-size: 0.9em;
+        color: #666;
+        margin-top: 5px;
+    }
     .filter-section {
         display: flex;
         justify-content: center;
@@ -385,6 +390,7 @@ def generate_html(items):
 
             
             <p><span class="company">{item['company']}</span>: {item['description']}</p>
+        <span class="published-date">Published: {item['published']}</span>
         </li>
 """
     
