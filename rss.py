@@ -55,6 +55,7 @@ for feeds in config.URLs:
         if pubDate:
             pubDate = parse_date(pubDate)
             pubDate = pubDate.strftime("%Y-%m-%d %H:%M:%S")
+        print(pubDate)
         items.append({'title': title, 'link': link, 'description': description, 'published': pubDate, 'company': author})
 
 # Sort the items by published date
@@ -395,6 +396,7 @@ def generate_html(items):
             finally:
                 return ""
     for item in items:
+        print(item['published'])
         list_items += f"""
         
         <li data-company="{item['company']}">
