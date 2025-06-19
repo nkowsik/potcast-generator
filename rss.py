@@ -383,13 +383,17 @@ def generate_html(items):
     list_items = ""
     def human_readable_date(published_date):
         now = datetime.now()
-        diff = now - datetime.strptime(published_date, "%Y-%m-%d %H:%M:%S")
-        if diff.days == 0:
-            return "Today"
-        elif diff.days == 1:
-            return "Yesterday"
-        else:
-            return f"{diff.days} days ago"
+        if published_date:
+            try:
+                diff = now - datetime.strptime(published_date, "%Y-%m-%d %H:%M:%S")
+                if diff.days == 0:
+                    return "Today"
+                elif diff.days == 1:
+                    return "Yesterday"
+                else:
+                    return f"{diff.days} days ago"
+            finally:
+                return ""
     for item in items:
         list_items += f"""
         
